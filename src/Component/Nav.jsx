@@ -20,7 +20,7 @@ const Nav = () => {
         <>
             <NavLink className='text-white mx-2' to="/">Home</NavLink>
             {
-                user&&<NavLink to='addCourse'>Add Course</NavLink>
+                user&&<NavLink className='text-white mx-2' to='addCourse'>Add Course</NavLink>
             }
         </>
     );
@@ -51,7 +51,7 @@ const Nav = () => {
                         <>
                             <div className="relative group inline-block">
                                 <img className='w-12 m-4 rounded-full' src={user.photoURL} alt="Profile" />
-                                <div className="absolute bottom-full left-1/2 mt-0 top-5  hidden group-hover:block bg-gray-800 text-white text-sm px-3 py-1 rounded">
+                                <div className="absolute bottom-full left-1/2 mt-0 top-5  hidden group-hover:block bg-gray-800 text-blue-700 text-sm px-3 py-1 rounded">
                                     {user.displayName}
                                 </div>
                             </div>
