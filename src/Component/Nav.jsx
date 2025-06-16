@@ -19,6 +19,9 @@ const Nav = () => {
     const link = (
         <>
             <NavLink className='text-white mx-2' to="/">Home</NavLink>
+            {
+                user&&<NavLink to='addCourse'>Add Course</NavLink>
+            }
         </>
     );
 

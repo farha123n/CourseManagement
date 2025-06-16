@@ -41,8 +41,8 @@ const Home = () => {
                         <div className="relative z-10 text-white p-4">
                             <div className='flex justify-center items-center'>
                              <div>
-                                   <h2 className="text-2xl font-bold">{d.title}</h2>
-                            <p>{d.Subtitle}</p>
+                                   <h2 className="text-5xl m-24 font-bold">{d.title}</h2>
+                            <p className='text-xl text-center'>{d.Subtitle}</p>
                              </div>
                             </div>
                         </div>
