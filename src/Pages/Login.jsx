@@ -1,41 +1,17 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider.jsx/AuthProvider';
 import { toast } from 'react-toastify';
-
+import { auth } from '../firebase.init';
 const Login = () => {
     const provider = new GoogleAuthProvider();
     const navigate=useNavigate()
     const location=useLocation()
-    const {logIn}=useContext(AuthContext)
-    const handleGoogleSignIN = () => {
-
-        console.log('star')
-        const auth = getAuth();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-                toast.success("login successfull")
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                toast.error(errorMessage)
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-                navigate('/')
-            });
-    }
+    const {logIn,googleSignIn}=useContext(AuthContext)
+    const handleGoogleSignIn=()=>{
+         googleSignIn()
+     }
     const handleLogin = (e) => {
         e.preventDefault()
         const form = e.target
@@ -64,7 +40,7 @@ const Login = () => {
                     <label className="label">Password</label>
                     <input type="password" name="password" className="input" placeholder="Password" />
 
-                    <button onClick={handleGoogleSignIN} className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition">
+                    <button onClick={handleGoogleSignIn} className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition">
                         <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo" className="w-5 h-5" />
                         <span className="text-sm font-medium text-gray-700">Continue with Google</span>
                     </button>

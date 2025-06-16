@@ -22,6 +22,9 @@ const Nav = () => {
             {
                 user&&<NavLink className='text-white mx-2' to='addCourse'>Add Course</NavLink>
             }
+            {
+                user&&<NavLink className='text-white mx-2' to='manageCourse'>Mange Course </NavLink>
+            }
         </>
     );
 
