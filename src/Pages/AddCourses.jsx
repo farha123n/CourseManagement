@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider.jsx/AuthProvider';
+import { useNavigate } from 'react-router';
 
 const AddCourses = () => {
+    const navigate=useNavigate()
     const {user}=useContext(AuthContext)
     const handleAddCourse = e => {
         e.preventDefault();
@@ -36,6 +38,7 @@ const AddCourses = () => {
                         timer: 1500
                     });
                     form.reset(); // Clear form after submission
+                    navigate('/')
                 }
             })
             .catch(error => {

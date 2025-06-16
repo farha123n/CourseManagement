@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
-
+    const [course,setCourse]=useState([])
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -33,7 +33,8 @@ const AuthProvider = ({ children }) => {
         setUser, // optional, if you need to update user elsewhere
         setLoading, // optional
         createUser,
-        updateUser, logIn, logOut
+        updateUser, logIn, logOut,
+        course,setCourse
     };
 
     return (

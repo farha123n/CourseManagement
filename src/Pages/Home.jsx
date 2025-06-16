@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import CourseList from '../Component/CourseList';
 
 const data = [
     {
@@ -23,6 +24,7 @@ const data = [
 ];
 
 const Home = () => {
+    const [courses,setCourses]=useState([])
     const settings = {
         dots: true,
         infinite: true,
@@ -30,6 +32,15 @@ const Home = () => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
+    useEffect(()=>{
+      fetch('http://localhost:3000/course')
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(setCourses(data))
+        console.log(data)
+      })
+
+    },[])
 
     return (
         <div className="mt-4">
@@ -49,6 +60,12 @@ const Home = () => {
                     </div>
                 ))}
             </Slider>
+            <div className='mt-4'>
+             <h1 className='text-red-600 text-center text-3xl'>Course Section</h1>
+             <div className='grid m-10 grid-cols-1 lg:grid-cols-3 gap-3'>
+              {courses.map(course=><CourseList course={course} key={course._id}></CourseList>)}
+             </div>
+            </div>
         </div>
     );
 };
