@@ -41,19 +41,15 @@ const CourseDetails = () => {
         });
     }
   }, [user, course]);
-  let count;
+
       console.log(enroll)
-      for(e of enrolledCourse){
-         if(user.email===e.email){
-          count++
-         }
-      }
+      console.log(enrolledCourse)
+
+     
    const nroll=enroll.find(e=>e._id==course._id)
    console.log(nroll)
   const handleEnroll = () => {
-    if(count>3){
-      toast.error('user cannot enroll this course')
-    }
+   
     if(nroll.enrolled>10){
       toast.error('sorry cannot enroll')
       return
@@ -66,7 +62,16 @@ const CourseDetails = () => {
       });
       return;
     }
-
+      let count;
+      for(const e of enrolledCourse){
+         if(user.email===e.email){
+          count++
+         }
+      }
+       if(count>3){
+      toast.error('user cannot enroll this course')
+      
+    }
     const Enroll = {
       courseId: course._id,
       email: user.email,

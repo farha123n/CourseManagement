@@ -10,7 +10,11 @@ const MyEnroll = () => {
     const [myEnroll, setMyEnroll] = useState([])
     useEffect(() => {
 
-        fetch(`http://localhost:3000/enrollCourse?email=${user.email}`).then(res => res.json()).
+        fetch(`http://localhost:3000/enrollCourse?email=${user.email}`,{
+            headers:{
+                authorization:`Bearer ${user.accessToken}`
+            }
+        }).then(res => res.json()).
             then(data => {
 
                 console.log(data)
@@ -21,6 +25,7 @@ const MyEnroll = () => {
     }, [user.email]);
     console.log(enrolledCourse)
     const handleDelete = (id) => {
+        console.log(id)
         Swal
             .fire({
                 title: "Are you sure?",
@@ -33,9 +38,9 @@ const MyEnroll = () => {
             }).then((result) => {
 
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:3000/enroll/${id}`, {
+                    fetch(`http://localhost:3000/enrolls/${id}`, {
                         method: 'DELETE',
-                    }).then(res => res.json).then(data => {
+                    }).then(res => res.json()).then(data => {
                         if (data.deletedCount) {
 
                             Swal.fire({
@@ -68,14 +73,14 @@ const MyEnroll = () => {
                         </thead>
                         <tbody>
                             {
-                                enrolledCourse.map(course =>
-                                    <tr key={course._id}>
+                                enrolledCourse.map(enroll =>
+                                    <tr key={enroll._id}>
 
-                                        <td>{course.title}</td>
-                                        <td>{course.description}</td>
+                                        <td>{enroll.title}</td>
+                                        <td>{enroll.description}</td>
                                         <td>
                                             <div className="join join-vertical">
-                                                <button onClick={() => { handleDelete(course._id) }} className="btn join-item">remove</button>
+                                                <button onClick={() => { handleDelete(enroll._id) }} className="btn join-item">remove</button>
 
 
                                             </div>

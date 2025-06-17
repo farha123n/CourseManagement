@@ -12,7 +12,11 @@ const ManegerUser = () => {
     const email = user?.email
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:3000/course/${email}`)
+            fetch(`http://localhost:3000/course/${email}`,{
+                headers:{
+                    authorization:`Bearer ${user.accessToken} `
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     setCourses(data);
