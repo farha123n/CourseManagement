@@ -3,12 +3,31 @@ import { AuthContext } from '../Provider.jsx/AuthProvider';
 import { CiTimer } from 'react-icons/ci';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const CourseDetails = () => {
   const { course, user } = useContext(AuthContext);
   const [alreadyEnrolled, setAlreadyEnrolled] = useState(false);
-
-  // ✅ Check if already enrolled
+  const [enroll,setEnroll]=useState([])
+  const [enrolledCourse,setEnrolledCourse]=useState([])
+  useEffect(() => {
+  if (user?.email) {
+    fetch('http://localhost:3000/courses')
+      .then(res => res.json())
+      .then(data => {
+        setEnroll(data);
+        console.log('Courses:', data);
+      });
+  }
+}, [user]);
+  useEffect(()=>{
+         fetch('http://localhost:3000/enroll')
+      .then(res => res.json())
+      .then(data => {
+        setEnrolledCourse(data);
+        console.log('Courses:', data);
+      });
+  },[])
   useEffect(() => {
     if (user?.email && course?._id) {
       axios
@@ -22,9 +41,23 @@ const CourseDetails = () => {
         });
     }
   }, [user, course]);
-
-  // ✅ Enroll handler
+  let count;
+      console.log(enroll)
+      for(e of enrolledCourse){
+         if(user.email===e.email){
+          count++
+         }
+      }
+   const nroll=enroll.find(e=>e._id==course._id)
+   console.log(nroll)
   const handleEnroll = () => {
+    if(count>3){
+      toast.error('user cannot enroll this course')
+    }
+    if(nroll.enrolled>10){
+      toast.error('sorry cannot enroll')
+      return
+    }
     if (alreadyEnrolled) {
       Swal.fire({
         icon: 'error',
