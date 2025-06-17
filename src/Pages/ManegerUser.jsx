@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider.jsx/AuthProvider';
 
 import { Link, NavLink } from 'react-router';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const ManegerUser = () => {
     const { user } = useContext(AuthContext)
@@ -60,6 +61,7 @@ const ManegerUser = () => {
     console.log(courses)
     return (
         <div>
+            <Helmet><title>manage</title></Helmet>
             <div className=''>
                 <div className="overflow-x-auto">
                     <table className="table">

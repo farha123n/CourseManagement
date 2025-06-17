@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import CourseList from '../Component/CourseList';
 import EnrollList from '../Component/EnrollList';
+import { Helmet } from 'react-helmet-async';
 
 const data = [
     {
@@ -54,6 +55,7 @@ const Home = () => {
 
     return (
         <div className="mt-4">
+            <Helmet><title>home</title></Helmet>
             <Slider {...settings}>
                 {data.map((d, index) => (
                     <div className="relative w-full h-screen">
@@ -82,8 +84,29 @@ const Home = () => {
               {sort.map(e=><EnrollList e={e} key={e._id}></EnrollList>)}
              </div>
             </div>
-        </div>
+              <section>
+              <h1 className='text-5xl text-red-500 text-center'>best word course</h1>
+              <p className='text-center'>this is the best courses for every one</p>
+        </section>
+            <section className='lg:flex justify-between'>
+            <div>
+                <h1 className='text-red-800 text-2xl'> our award </h1>
+                <p>google certified</p>
+            </div>
+            <div>
+                <h1 className='text-2xl'>
+                   recognization
+
+                </h1>
+                <p>Word recognization</p>
+            </div>
+         </section>
+         </div>
+     
+
     );
+       
+      
 };
 
 export default Home;

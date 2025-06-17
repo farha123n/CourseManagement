@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider.jsx/AuthProvider';
 import { useNavigate } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 const AddCourses = () => {
     const navigate=useNavigate()
@@ -53,6 +54,9 @@ const AddCourses = () => {
 
     return (
         <div className='flex min-h-screen justify-center items-center'>
+            <Helmet>
+                <title>add course</title>
+            </Helmet>
             <div className='bg-[#dc3545] p-4 my-3 rounded-3xl'>
                 <p className="py-1 w-full text-3xl text-white text-center font-bold">Add Course</p>
                 <form onSubmit={handleAddCourse} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">

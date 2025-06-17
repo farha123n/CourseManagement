@@ -4,6 +4,7 @@ import { CiTimer } from 'react-icons/ci';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const CourseDetails = () => {
   const { course, user } = useContext(AuthContext);
@@ -119,6 +120,7 @@ const CourseDetails = () => {
 
   return (
     <div className="bg-[#dc3545] p-1 mx-auto my-3.5 max-w-md">
+      <Helmet>Course Details</Helmet>
       <img src={course.url} alt={course.title} className="w-full h-auto" />
       <div className="p-4">
         <h1 className="text-3xl text-white">{course.title}</h1>

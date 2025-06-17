@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider.jsx/AuthProvider';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Update = () => {
     const {user}=useContext(AuthContext)
@@ -54,6 +55,7 @@ const Update = () => {
     };
     return (
         <div className='flex min-h-screen justify-center items-center'>
+            <Helmet><title>Update</title></Helmet>
             <div className='bg-[#dc3545] p-4 my-3 rounded-3xl'>
                 <p className="py-1 w-full text-3xl text-white text-center font-bold">Update Course</p>
                 <form onSubmit={handleUpdateCourse} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">

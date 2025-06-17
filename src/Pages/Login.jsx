@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider.jsx/AuthProvider';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const { logIn, googleSignIn } = useContext(AuthContext);
@@ -32,6 +33,7 @@ const Login = () => {
 
   return (
     <div className='min-h-screen flex justify-center items-center'>
+      <Helmet><title>login</title></Helmet>
       <div className='bg-[#dc3545] p-6 rounded-lg'>
         <form onSubmit={handleLogin} className="w-80 space-y-4 text-white">
           <h2 className="text-2xl font-bold text-center">Login</h2>

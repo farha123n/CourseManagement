@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider.jsx/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyEnroll = () => {
     const { user } = useContext(AuthContext);
@@ -59,6 +60,7 @@ const MyEnroll = () => {
     }
     return (
         <div>
+            <Helmet><title>enroll</title></Helmet>
             <div className=''>
                 <div className="overflow-x-auto">
                     <table className="table">
