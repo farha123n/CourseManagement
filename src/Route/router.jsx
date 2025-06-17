@@ -26,13 +26,13 @@ export const router = createBrowserRouter([
                 path: 'register', Component: Register
             },
             {
-                path: 'addCourse', Component: AddCourses
+                path: 'addCourse', element:<PrivateRoute><AddCourses></AddCourses></PrivateRoute>
             },
             {
                 path: '/details', Component: CourseDetails
             },
             {
-                path: '/manageCourse', Component: ManegerUser
+                path: '/manageCourse', element:<PrivateRoute><ManegerUser></ManegerUser></PrivateRoute>
 
             },
             {

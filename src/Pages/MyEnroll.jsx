@@ -76,7 +76,7 @@ const MyEnroll = () => {
                                 enrolledCourse.map(enroll =>
                                     <tr key={enroll._id}>
 
-                                        <td>{enroll.title}</td>
+                                        <td>{enroll.courseTitle}</td>
                                         <td>{enroll.description}</td>
                                         <td>
                                             <div className="join join-vertical">

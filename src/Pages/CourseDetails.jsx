@@ -74,6 +74,9 @@ const CourseDetails = () => {
     }
     const Enroll = {
       courseId: course._id,
+      courseTitle:course.title,
+      description:course.description,
+
       email: user.email,
     };
 

@@ -10,65 +10,24 @@ const Login = () => {
   const from = location.state?.from?.pathname || '/';
 
 
-  const handleGoogleSignIn = async () => {
-    try {
-      const result = await googleSignIn(); // This returns userCredential
-      const user = result.user;
-
-      // 🔐 Get the Firebase ID token
-      const idToken = await user.getIdToken();
-
-      // 📨 Send the ID token to your backend for verification
-      const response = await fetch('http://localhost:3000/auth/google', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${idToken}`,
-        },
-        body: JSON.stringify({}),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to authenticate with backend');
-      }
-
-      
-      toast.success('Google login successful!');
-      navigate(from, { replace: true });
-    } catch (error) {
-      console.error('Google Sign-In Error:', error);
-      toast.error('Login failed: ' + error.message);
-    }
-  };
-  const handleLogin = async (e) => {
+  const handleGoogleSignIn=()=>{
+         googleSignIn()
+     }
+  const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    try {
-      const userCredential = await logIn(email, password);
-      const user = userCredential.user;
-
-      // Get the Firebase ID Token
-      const idToken = await user.getIdToken();
-
-      // Optional: Send token to your backend to verify & return protected data or JWT
-      const response = await fetch('http://localhost:3000/protected', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${idToken}`,
-        },
-      });
-
-      if (!response.ok) throw new Error('Backend auth failed');
-
-      toast.success('Login Successful!');
-      navigate(from, { replace: true });
-    } catch (error) {
-      console.error('Login error:', error);
-      toast.error('Login Failed: ' + error.message);
-    }
+    logIn(email, password)
+      .then((userCredential) => {
+        toast.success('Login Successful!');
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+  console.error('Login error:', error); // ← Debug log
+  toast.error('Login Failed: ' + error.message);
+});
   };
 
   return (
