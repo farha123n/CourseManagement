@@ -30,7 +30,7 @@ const Update = () => {
             email:user.email
         };
 
-        axios.put(`http://localhost:3000/courses/${_id}`, newCourse)
+        axios.put(`https://server-rho-lime-60.vercel.app/courses/${_id}`, newCourse)
             .then(res => {
                 if (res.data.insertedId || res.data.acknowledged) {
                     Swal.fire({

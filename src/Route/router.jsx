@@ -9,6 +9,8 @@ import ManegerUser from "../Pages/ManegerUser";
 import PrivateRoute from "./PrivateRoute";
 import Update from "../Pages/Update";
 import MyEnroll from "../Pages/MyEnroll";
+import Error from "../Pages/Error";
+import UserInfo from "../Pages/UserInfo";
 
 
 
@@ -17,6 +19,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         Component: Root,
+        errorElement:<Error></Error>,
         children: [
             { index: true, Component: Home },
             {
@@ -37,12 +40,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/edit/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/courses/${params.id}`),
+                loader: ({ params }) => fetch(`https://server-rho-lime-60.vercel.app///courses/${params.id}`),
                 element: <PrivateRoute><Update /></PrivateRoute>
             },
             {
                 path:'/myEnroll',
                 element:<PrivateRoute><MyEnroll></MyEnroll></PrivateRoute>
+            },
+            {
+                path:'myInfo',
+                element:<PrivateRoute><UserInfo></UserInfo></PrivateRoute>
             }
         ]
     }

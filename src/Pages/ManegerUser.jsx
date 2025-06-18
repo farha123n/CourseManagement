@@ -13,7 +13,7 @@ const ManegerUser = () => {
     const email = user?.email
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:3000/course/${email}`,{
+            fetch(`https://server-rho-lime-60.vercel.app/course/${email}`,{
                 headers:{
                     authorization:`Bearer ${user.accessToken} `
                 }
@@ -39,7 +39,7 @@ const ManegerUser = () => {
             }).then((result) => {
 
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:3000/course/${id}`, {
+                    fetch(`https://server-rho-lime-60.vercel.app/course/${id}`, {
                         method: 'DELETE',
                     }).then(res => res.json).then(data => {
                         if (data.deletedCount) {

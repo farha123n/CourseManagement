@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from './Component/Nav';
 import { Outlet } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import Footer from './Component/Footer';
 
 const Root = () => {
     return (
@@ -9,6 +10,7 @@ const Root = () => {
             <Nav></Nav>
              <ToastContainer autoClose={3000} />
             <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };

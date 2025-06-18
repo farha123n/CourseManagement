@@ -11,7 +11,7 @@ const MyEnroll = () => {
     const [myEnroll, setMyEnroll] = useState([])
     useEffect(() => {
 
-        fetch(`http://localhost:3000/enrollCourse?email=${user.email}`,{
+        fetch(`https://server-rho-lime-60.vercel.app/enrollCourse?email=${user.email}`,{
             headers:{
                 authorization:`Bearer ${user.accessToken}`
             }
@@ -39,7 +39,7 @@ const MyEnroll = () => {
             }).then((result) => {
 
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:3000/enrolls/${id}`, {
+                    fetch(`https://server-rho-lime-60.vercel.app/enrolls/${id}`, {
                         method: 'DELETE',
                     }).then(res => res.json()).then(data => {
                         if (data.deletedCount) {

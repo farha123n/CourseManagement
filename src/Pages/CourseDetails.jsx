@@ -13,7 +13,7 @@ const CourseDetails = () => {
   const [enrolledCourse,setEnrolledCourse]=useState([])
   useEffect(() => {
   if (user?.email) {
-    fetch('http://localhost:3000/courses')
+    fetch('https://server-rho-lime-60.vercel.app/courses')
       .then(res => res.json())
       .then(data => {
         setEnroll(data);
@@ -22,7 +22,7 @@ const CourseDetails = () => {
   }
 }, [user]);
   useEffect(()=>{
-         fetch('http://localhost:3000/enroll')
+         fetch('https://server-rho-lime-60.vercel.app/enroll')
       .then(res => res.json())
       .then(data => {
         setEnrolledCourse(data);
@@ -32,7 +32,7 @@ const CourseDetails = () => {
   useEffect(() => {
     if (user?.email && course?._id) {
       axios
-        .get(`http://localhost:3000/enroll/check?email=${user.email}&courseId=${course._id}`)
+        .get(`https://server-rho-lime-60.vercel.app/enroll/check?email=${user.email}&courseId=${course._id}`)
         .then(res => {
           setAlreadyEnrolled(res.data.alreadyEnrolled);
         })
@@ -82,13 +82,13 @@ const CourseDetails = () => {
     };
 
     axios
-      .post('http://localhost:3000/enroll', Enroll)
+      .post('https://server-rho-lime-60.vercel.app/enroll', Enroll)
       .then(res => {
         if (res.data.insertedId || res.data.acknowledged) {
           const enrollCourseCount = (course.enrolled || 0) + 1;
 
           axios
-            .patch(`http://localhost:3000/course/${course._id}`, {
+            .patch(`https://server-rho-lime-60.vercel.app/course/${course._id}`, {
               enrolled: enrollCourseCount,
             })
             .then(() => {
@@ -120,7 +120,7 @@ const CourseDetails = () => {
 
   return (
     <div className="bg-[#dc3545] p-1 mx-auto my-3.5 max-w-md">
-      <Helmet>Course Details</Helmet>
+      <Helmet>s<title>Course Detail</title></Helmet>
       <img src={course.url} alt={course.title} className="w-full h-auto" />
       <div className="p-4">
         <h1 className="text-3xl text-white">{course.title}</h1>

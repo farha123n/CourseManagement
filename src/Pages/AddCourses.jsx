@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 
 const AddCourses = () => {
-    const navigate=useNavigate()
-    const {user}=useContext(AuthContext)
+    const navigate = useNavigate()
+    const { user } = useContext(AuthContext)
     const handleAddCourse = e => {
         e.preventDefault();
         const date = new Date();
@@ -24,11 +24,15 @@ const AddCourses = () => {
             url,
             duration,
             courseCreationTime: date,
-            enrolled:0,
-            email:user.email
+            enrolled: 0,
+            email: user.email
         };
 
-        axios.post('http://localhost:3000/course', newCourse)
+        axios.post('https://server-rho-lime-60.vercel.app/course', newCourse,{
+            headers:{
+                authorization:`Bearer ${user.accessToken}`
+            }
+        })
             .then(res => {
                 if (res.data.insertedId || res.data.acknowledged) {
                     Swal.fire({

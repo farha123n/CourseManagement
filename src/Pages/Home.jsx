@@ -36,7 +36,7 @@ const Home = () => {
         slidesToScroll: 1
     };
     useEffect(()=>{
-      fetch('http://localhost:3000/courseEnrolled')
+      fetch('https://server-rho-lime-60.vercel.app/courseEnrolled')
       .then(res=>res.json())
       .then(data=>{
         console.log(setSort(data))
@@ -45,7 +45,7 @@ const Home = () => {
 
     },[])
     useEffect(()=>{
-         fetch('http://localhost:3000/course')
+         fetch('https://server-rho-lime-60.vercel.app/course')
       .then(res=>res.json())
       .then(data=>{
         console.log(setCourses(data))
