@@ -9,8 +9,10 @@ const Root = () => {
         <div className='min-h-screen flex flex-col'>
             <Nav></Nav>
              <ToastContainer autoClose={3000} />
-            <Outlet></Outlet>
+             <div className='pt-40 min-h-screen'>
+                <Outlet></Outlet>
             <Footer></Footer>
+            </div>
         </div>
     );
 };

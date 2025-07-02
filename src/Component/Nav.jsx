@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { IoLogoYoutube } from "react-icons/io5";
 import { AuthContext } from '../Provider.jsx/AuthProvider';
 import { toast } from 'react-toastify';
@@ -19,6 +19,10 @@ const Nav = () => {
     const link = (
         <>
             <NavLink className='text-white mx-2' to="/">Home</NavLink>
+            <Link className='text-white mx-2' to='/about'>About</Link>
+            <Link className='text-white mx-2' to='/Contact'>Contact</Link>
+            <Link className='text-white mx-2' to='/support'>Support</Link>
+            <Link className='text-white mx-2' to='/jobs'>jobs</Link>
             {
                 user&&<NavLink className='text-white mx-2' to='addCourse'>Add Course</NavLink>
             }
@@ -36,7 +40,7 @@ const Nav = () => {
 
     return (
         <div>
-            <div className="navbar bg-[#dc3545] shadow-sm">
+            <div className="navbar bg-[#dc3545] z-50 shadow-sm fixed">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -11,6 +11,10 @@ import Update from "../Pages/Update";
 import MyEnroll from "../Pages/MyEnroll";
 import Error from "../Pages/Error";
 import UserInfo from "../Pages/UserInfo";
+import About from "../Component/About";
+import Contact from "../Component/Contact";
+import Support from "../Component/Support";
+import Job from "../Component/Job";
 
 
 
@@ -22,6 +26,18 @@ export const router = createBrowserRouter([
         errorElement:<Error></Error>,
         children: [
             { index: true, Component: Home },
+            {
+              path:'/about',Component:About
+            },
+            {
+                path:'/contact',Component:Contact
+            },
+            {
+              path:'/support',Component:Support
+            },
+            {
+                path:'/jobs',Component:Job
+            },
             {
                 path: 'login', Component: Login
             },

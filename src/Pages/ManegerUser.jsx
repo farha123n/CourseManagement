@@ -60,7 +60,7 @@ const ManegerUser = () => {
     }
     console.log(courses)
     return (
-        <div>
+        <div className='min-h-screen'>
             <Helmet><title>manage</title></Helmet>
             <div className=''>
                 <div className="overflow-x-auto">

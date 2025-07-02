@@ -59,7 +59,7 @@ const MyEnroll = () => {
 
     }
     return (
-        <div>
+        <div className='min-h-screen'>
             <Helmet><title>enroll</title></Helmet>
             <div className=''>
                 <div className="overflow-x-auto">
